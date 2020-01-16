@@ -1,0 +1,68 @@
+package helloworld;
+
+public class Sort {
+    // Selection Sort
+    // Time Complexity:O(n^2)双层for循环，循环嵌套的时间复杂度就是指最内层循环的时间负责度。
+    // Space Complexity: O(1)  limited local variable & no new obj.
+    public static void selectionSort(int[] a){ // because we sort the array in place, so we needn't return a new array, we can return void here.
+       int len = a.length;
+       for(int i = 0; i < len - 1 ; i++){ //assign unsorted array.
+           int curMin = i;
+           for(int j = i+1 ; j < len ; j++){ // find the currMin in unsorted array
+               if(a[j] < a[curMin]){
+                   curMin = j;
+               }
+           }
+           int temp = a[i];
+           a[i] = a[curMin];
+           a[curMin] = temp;
+       }
+    }
+    // Merge Sort
+    //Time Complexity: O(nlogn)
+    //Space Complexity:O(n)
+    public static int[] mergeSort(int[] a){
+        if(a == null || a.length <=1){
+            return a;
+        }
+        return mergeSort(a,0,a.length-1);
+    }
+
+    private static int[] mergeSort(int[] a, int left, int right){
+        //base case ***1
+        if(left == right){
+            return new int[] {a[left]};
+        }
+        int mid = left + (right - left)/2;
+        int[] leftArray = mergeSort(a, left, mid); //***2 不能写成 left ~ (mid-1), mid ~ right.
+        int[] rightArray = mergeSort(a,mid+1,right); //For example: l = 5, r =6,mid = 5 left ~ (mid-1): (5,4) 空集  ,  mid ~ right: (5,6) 问题并未缩减，stack overflow，recursion 大忌。
+        return merge(leftArray,rightArray);
+    }
+    private static int[] merge(int[] leftArray, int[] rightArray){
+        int[] res = new int[leftArray.length + rightArray.length];
+        int i = 0;  //start of left array.
+        int j = 0; //start of right array.
+        int k = 0; //start of res array.
+        while(i < leftArray.length && j < rightArray.length){ // compare every elements of each arrays, put the smaller one into res. And change the position of i or j & k.
+            if(leftArray[i] <= rightArray[j] ){
+                res[k] = leftArray[i];
+                i++;
+            }else{
+                res[k] = rightArray[j];
+                j++;
+            }
+            k++;
+        }
+        while(i < leftArray.length){ //while one of array have been put into the res completely, you should put all of remaining elements of another array into the res too.
+            res[k] = leftArray[i];
+            i++;                     // And change the position of i or j & k.
+            k++;
+        }
+        while(j < rightArray.length){
+            res[k] = rightArray[j];
+            j++;
+            k++;
+        }
+      return res;
+    }
+}
