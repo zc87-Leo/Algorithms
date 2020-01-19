@@ -1,5 +1,7 @@
 package helloworld;
 
+import java.util.Random;
+
 public class Sort { // 一般情况下 merge sort 与 quick sort 为最优解。时间复杂度都为O(nlogn)
 
     // 1. Selection Sort
@@ -68,7 +70,62 @@ public class Sort { // 一般情况下 merge sort 与 quick sort 为最优解。
     }
 
     // 3. Quick Sort
+    // Time Complexity: O(nlogn)  worstcase: O(n^2)
+    // Space Complexity: O（logn) worstcase: O(n)
+   public static void quickSort(int[] array){
+        if(array == null || array.length <=1){
+              return ;
+       }
+       quickSort(array,0,array.length-1);
+   }
 
+   static Random random = new Random();
+   private static void quickSort(int[] array, int left, int right){
+       if(left >= right){
+           return;
+       }
+       int pivotIndex = left + random.nextInt(right - left + 1); //random.nextInt(x) --> [0,x-1]
+       swap(array, pivotIndex, right);
+       int i = left;
+       int j = right -1;
+       while(i<=j){
+       if(array[i]<=array[right]){
+           i++;
+       }else {
+           swap(array,i,j);
+           j--;
+       }
+       }
+       swap(array,i,right); //i 是当前数列中比right大的第一个数
 
+       quickSort(array,left,i-1);
+       quickSort(array,i+1,right);
+   }
+   private static void swap(int[] array, int x, int y){
+    int tmp = array[x];
+    array[x] = array[y];
+    array[y] = tmp;  //需要注意 这里swap的不是index 而是具体的数。
+   }
+
+   // 4. Rainbow Sort e.g. input: [2,1,1,2,3,1,2,3,3]
+    // Time Complexity: O(n)
+    // Space Complexity: O(1)
+    public static void rainbowSort(int[] array){
+       int i = 0; // 第二个数的开头。
+       int j = 0; // 当前需要比较的数。
+       int k = array.length - 1; // 第三个数的开头。
+       while(j <= k){
+           if (array[j] == 1){
+               i++;
+               j++;
+           }else if(array[j] == 2){
+               j++;
+           }else{
+               swap(array,j,k);
+               k--;
+           }
+       }
+
+    }
 
 }
