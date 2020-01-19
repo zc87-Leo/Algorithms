@@ -1,7 +1,8 @@
 package helloworld;
 
-public class Sort {
-    // Selection Sort
+public class Sort { // 一般情况下 merge sort 与 quick sort 为最优解。时间复杂度都为O(nlogn)
+
+    // 1. Selection Sort
     // Time Complexity:O(n^2)双层for循环，循环嵌套的时间复杂度就是指最内层循环的时间负责度。
     // Space Complexity: O(1)  limited local variable & no new obj.
     public static void selectionSort(int[] a){ // because we sort the array in place, so we needn't return a new array, we can return void here.
@@ -18,7 +19,7 @@ public class Sort {
            a[curMin] = temp;
        }
     }
-    // Merge Sort
+    // 2. Merge Sort
     //Time Complexity: O(nlogn)
     //Space Complexity:O(n)
     public static int[] mergeSort(int[] a){
@@ -32,10 +33,10 @@ public class Sort {
         //base case ***1
         if(left == right){
             return new int[] {a[left]};
-        }
+        } //拆成 只有一个元素的状态
         int mid = left + (right - left)/2;
-        int[] leftArray = mergeSort(a, left, mid); //***2 不能写成 left ~ (mid-1), mid ~ right.
-        int[] rightArray = mergeSort(a,mid+1,right); //For example: l = 5, r =6,mid = 5 left ~ (mid-1): (5,4) 空集  ,  mid ~ right: (5,6) 问题并未缩减，stack overflow，recursion 大忌。
+        int[] leftArray = mergeSort(a, left, mid); //***2 不能写成 left ~ (mid-1), mid ~ right.                   ****左闭右闭
+        int[] rightArray = mergeSort(a,mid+1,right); //For example: l = 5, r =6,mid = 5 left ~ (mid-1): (5,4) 空集  ,  mid ~ right: (5,6) 问题并未缩减，stack overflow，recurs
         return merge(leftArray,rightArray);
     }
     private static int[] merge(int[] leftArray, int[] rightArray){
@@ -65,4 +66,9 @@ public class Sort {
         }
       return res;
     }
+
+    // 3. Quick Sort
+
+
+
 }
