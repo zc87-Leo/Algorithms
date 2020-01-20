@@ -5,11 +5,46 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class QueueStack {
+
     // How could we implement a queue by using 2 stacks.
     private Deque<Integer> in = new LinkedList<>();
     private Deque<Integer> out = new LinkedList<>();
 
+    public void offer(int val){
+        in.push(val);
+    }
 
+    public void shuffleNecessary() {
+        if (out.isEmpty()) {
+            while (!in.isEmpty()) {
+                out.push(in.pop());
+            }
+        }
+    }
+
+    public Integer poll(){ //有可能会返回null，所以不能用int，需要用Integer。
+      shuffleNecessary();
+      if(out.isEmpty()){
+          return null;
+      }
+      return out.pop();
+    }
+
+    public Integer peek(){
+        shuffleNecessary();
+        if(out.isEmpty()){
+            return null;
+        }
+        return out.peek();
+    }
+
+    public int size(){
+        return (in.size() + out.size());
+    }
+
+    public boolean isEmpty(){
+        return (in.isEmpty() && out.isEmpty());
+    }
 
 
 
