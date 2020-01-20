@@ -16,5 +16,10 @@ My experience of learning algorithms.
 2. Stack With Min
 
 ### Sorts
-1.Selection Sort
-2.Merge Sort
+1. Selection Sort
+2. Merge Sort
+3. Quick Sort
+4. Rainbow Sort
+
+### Linked List
+1. Reverse Linked List
