@@ -5,8 +5,22 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class QueueStack {
+    // How could we implement a queue by using 2 stacks.
+    private Deque<Integer> in = new LinkedList<>();
+    private Deque<Integer> out = new LinkedList<>();
+
+
+
+
+
+
+
+
+
+
+
     public static void main(String[] args) {
-        Queue<Integer> q = new LinkedList<>(); // First in first out.(FIFO)
+       /* Queue<Integer> q = new LinkedList<>(); // First in first out.(FIFO)
         q.offer(3); // add
         q.offer(1);
         q.offer(7);
@@ -25,6 +39,6 @@ public class QueueStack {
         System.out.println(stack.peek());//222
         System.out.println(stack.pollFirst());//222
         System.out.println(stack.size());//1
-        System.out.println(stack.isEmpty());//false
+        System.out.println(stack.isEmpty());//false*/
     }
 }

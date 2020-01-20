@@ -81,7 +81,7 @@ public class Sort { // 一般情况下 merge sort 与 quick sort 为最优解。
 
    static Random random = new Random();
    private static void quickSort(int[] array, int left, int right){
-       if(left >= right){
+       if(left >= right){ //   > : pivot 选到了边界元素。    = ： 只剩下一个元素。
            return;
        }
        int pivotIndex = left + random.nextInt(right - left + 1); //random.nextInt(x) --> [0,x-1]
@@ -111,11 +111,15 @@ public class Sort { // 一般情况下 merge sort 与 quick sort 为最优解。
     // Time Complexity: O(n)
     // Space Complexity: O(1)
     public static void rainbowSort(int[] array){
+       if(array == null || array.length <=1){
+           return;
+       }
        int i = 0; // 第二个数的开头。
        int j = 0; // 当前需要比较的数。
        int k = array.length - 1; // 第三个数的开头。
        while(j <= k){
            if (array[j] == 1){
+               swap(array,i,j);
                i++;
                j++;
            }else if(array[j] == 2){
