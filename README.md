@@ -12,8 +12,8 @@ My experience of learning algorithms.
 2. Power
 
 ### Queue & Stack
-1. Functions
-2. Stack With Min
+1. Stack With Min
+2. Use Two Stacks to Implement a Queue
 
 ### Sorts
 1. Selection Sort
