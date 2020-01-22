@@ -16,9 +16,10 @@ public class Sort { // 一般情况下 merge sort 与 quick sort 为最优解。
                    curMin = j;
                }
            }
-           int temp = a[i];
-           a[i] = a[curMin];
-           a[curMin] = temp;
+           //int temp = a[i];
+           //a[i] = a[curMin];
+           //a[curMin] = temp;
+           swap(a,i,curMin);
        }
     }
     // 2. Merge Sort

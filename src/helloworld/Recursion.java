@@ -84,7 +84,7 @@ public class Recursion { // 递归
     subproblem: f(a,b/2)
     recursion rule: b is even: f(a,b) = f(a,b/2)*f(a,b/2); b is odd :  f(a,b) = f(a,b/2)*f(a,b/2)*a
     base case: f(a,0) = a^0=1
-    Time Complexity = O(b) Space Complexity = O(log b)
+    Time Complexity = O(b) （存为half后，优化为logb） Space Complexity = O(log b)
      */
 
     public static long power3(int a,int b){
@@ -92,10 +92,11 @@ public class Recursion { // 递归
         if(b == 0){
             return 1;
         }
+        long half = power3(a,b/2);
         if(b%2 == 0){
-        return power3(a,b/2)*power3(a,b/2);
+        return half * half;
     }else{
-            return power3(a,b/2)*power3(a,b/2)*a;
+            return half * half * a;
         }
     }
 

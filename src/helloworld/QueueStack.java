@@ -16,7 +16,7 @@ public class QueueStack {
 
     public void shuffleNecessary() {
         if (out.isEmpty()) {
-            while (!in.isEmpty()) {
+            while (!in.isEmpty()) { //要用while，不能用if ，否则不能将in中所有数都shuffle到out
                 out.push(in.pop());
             }
         }
@@ -39,7 +39,7 @@ public class QueueStack {
     }
 
     public int size(){
-        return (in.size() + out.size());
+        return (in.size() + out.size());  //size 后有（）
     }
 
     public boolean isEmpty(){
