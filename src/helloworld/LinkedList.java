@@ -29,7 +29,6 @@ public class LinkedList {
         return subHead;
     }
 
-
     // 找到链表的中间节点
     public ListNode findMiddleNode(ListNode head){
         if(head == null){
