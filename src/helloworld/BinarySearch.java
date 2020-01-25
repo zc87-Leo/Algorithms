@@ -60,7 +60,7 @@ public class BinarySearch {//二分查找
         int right = array.length - 1;
         while (left < right - 1) {
             int mid = left + (right - left) / 2;
-            if (array[mid] >= target) {
+            if (array[mid] >= target) { // = 的情况只能和 >的情况写在一起，移动r。如果和 < 的情况写在一起移动l，可能会miss更前面的target。 口诀：找first ， 往前找 ,  r <----.
                 right = mid;
 
             }else {
