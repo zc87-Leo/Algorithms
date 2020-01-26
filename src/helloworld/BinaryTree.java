@@ -102,7 +102,7 @@ public class BinaryTree {
         int l = getHeightOrUnbalanced(root.left);
         int r = getHeightOrUnbalanced(root.right);
         if(l < 0 || r < 0){
-            return -1;
+            return -1; //一处不balance ，即不balance。
         }
         if(Math.abs(l-r) > 1){
             return -1;

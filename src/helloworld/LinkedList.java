@@ -31,7 +31,7 @@ public class LinkedList {
 
     // 找到链表的中间节点
     public ListNode findMiddleNode(ListNode head){
-        if(head == null){
+        if(head == null || head.next == null){  //需要判断head.next是否为空，因为我们翻转时需要对head后一个元素进行.操作.
             return null;
         }
         ListNode slow = head;
@@ -131,6 +131,7 @@ public class LinkedList {
         curr2.next = null;
         return dummy1.next;
     }
+
 
 }
 
